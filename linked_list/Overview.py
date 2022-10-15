@@ -184,3 +184,54 @@ class Solution:
         return head
         
 
+# https://leetcode.com/explore/learn/card/linked-list/219/classic-problems/1204/
+# Reverse Linked List
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+# Iteratively
+# Use two pointers, prev and curr
+# Visualizing what to do with example 
+# [] - [1] -> [2] -> [3] -> [] 
+#       h
+#  c        
+#  p
+# Analysis: Time complexity O(n), Space complexity O(1)
+
+class Solution:
+    def reverseList(self, head):
+        prev = None
+        while head:
+            curr = head
+            head = head.next
+            curr.next = prev
+            prev = curr
+        return prev
+
+
+# https://leetcode.com/explore/learn/card/linked-list/219/classic-problems/1207/
+#  Remove Linked List Elements
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
+        
+        dummy_head = ListNode(-1)
+        dummy_head.next = head
+        currrent_node = dummy_head
+
+        while current_node.next != None:
+            if current_node.next.val == val:
+                current_node.next = current_node.next.next
+            else:
+                current_node = current_node.next
+        return dummy_head.next
+            
